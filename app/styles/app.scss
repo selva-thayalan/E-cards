@@ -1,0 +1,71 @@
+@import "variables";
+@import "default";
+
+/* App styles starting here!!! */
+.header{
+    height: 50px;
+    width: 100%;
+    background-color: var(--color-main);
+    color: white;
+    text-align: center;
+    font-size: larger;
+}
+
+.header-title{
+    padding: 15px 0px;
+}
+
+.main-container{
+    height: calc(100% - 50px);
+}
+
+.home-page-cont{
+    text-align: center;
+}
+
+.home-page-content-wrapper{
+    height: 70%;
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    vertical-align: middle;
+    flex-direction: column;
+    align-self: center;
+    justify-self: center;
+    margin: auto;
+}
+
+.card-type-list-cont{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-around;
+    align-items: center;
+}
+
+.upcoming-card-types{
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    align-content: space-evenly;
+}
+
+ul.link li{
+    height: 20px;
+    @include linkHoverEffect(var(--color-main));
+}
+
+.upcoming-card-type-list-cont{
+    display: flex;
+    flex: 2;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upcoming-types-text{
+    flex: 2;
+    justify-content: center;
+    align-content: center;
+}

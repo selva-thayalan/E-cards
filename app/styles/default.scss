@@ -1,0 +1,27 @@
+body{
+    height: 100vh;
+    margin: 0px;
+}
+
+a{
+    text-decoration: none;
+}
+
+p, ul{
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+
+ul{
+    padding-inline-start: 0px;
+}
+
+/* Common styles to resue!!! */
+.full_size{
+    height: 100%;
+    width: 100%;
+}
+/* .no_default_style this class will be used to remove the default style of that elements */
+ul.no_default_style{
+    list-style-type: none;
+}

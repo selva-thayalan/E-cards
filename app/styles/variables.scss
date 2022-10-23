@@ -1,0 +1,14 @@
+:root{
+    --color-main: rgb(52, 255, 167);
+    --color-text-main: black;
+    --color-text-main-invert: white;
+}
+
+@mixin linkHoverEffect($bgColor) {
+    width: max-content;
+    padding: 10px 20px;
+    border-radius: 5px;
+    &:hover{
+        background-color: $bgColor;
+    }
+}
