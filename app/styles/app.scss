@@ -53,19 +53,18 @@
 
 ul.link li{
     height: 20px;
-    @include linkHoverEffect(var(--color-main));
+    @include linkButton();
 }
 
 .upcoming-card-type-list-cont{
     display: flex;
-    flex: 2;
     justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
 }
 
 .upcoming-types-text{
-    flex: 2;
-    justify-content: center;
-    align-content: center;
+    padding: 5px;
+    font-style: italic;
+    font-size: 16px;
 }

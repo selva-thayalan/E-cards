@@ -5,6 +5,9 @@ body{
 
 a{
     text-decoration: none;
+    &:-webkit-any-link{
+        color: unset;
+    }
 }
 
 p, ul{

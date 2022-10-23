@@ -5,10 +5,16 @@
 }
 
 @mixin linkHoverEffect($bgColor) {
+    &:hover{
+        transition: all .3s;
+        background-color: $bgColor;
+        color: var(--color-text-main-invert);
+    }
+}
+
+@mixin linkButton {
     width: max-content;
     padding: 10px 20px;
     border-radius: 5px;
-    &:hover{
-        background-color: $bgColor;
-    }
+    @include linkHoverEffect(var(--color-main));
 }
