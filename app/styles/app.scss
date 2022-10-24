@@ -68,3 +68,48 @@ ul.link li{
     font-style: italic;
     font-size: 16px;
 }
+
+// Menu card creation styles
+.create-menu-form-cont{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.create-menu-form{
+    height: 90%;
+    width: 90%;
+    max-width: 500px;
+    margin: auto;
+    padding: 10px;
+    border: 1px var(--color-main) solid;
+    box-shadow: 0 0 10px var(--color-main);
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+input.card-input{
+    height: 25px;
+    border-radius: 3px;
+    border: 1px solid black;
+    &[type=text]{
+        &:focus,&:active,&:hover{
+            outline: none;
+            border: 1px solid var(--color-main);
+        }
+        &:focus{
+            box-shadow: 0 0 3px var(--color-main);
+        }
+    }
+}
+
+.add-new-item-btn{
+    margin: 2px;
+    font-size: 15px;
+    border-radius: 3px;
+    outline: none;
+    color: var(--color-main);
+    border: 2px solid var(--color-main);
+    @include linkHoverEffect(var(--color-main));
+}

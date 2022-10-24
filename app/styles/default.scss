@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 body{
     height: 100vh;
     margin: 0px;
@@ -8,6 +12,10 @@ a{
     &:-webkit-any-link{
         color: unset;
     }
+}
+
+a,button{
+    cursor: pointer;
 }
 
 p, ul{
@@ -27,4 +35,33 @@ ul{
 /* .no_default_style this class will be used to remove the default style of that elements */
 ul.no_default_style{
     list-style-type: none;
+}
+
+.w_{
+    &100{
+        width: 100%;
+    }
+    &60{
+        width: 60%;
+    }
+    &20{
+        width: 20%;
+    }
+}
+
+.m_{
+    &l_{
+        &5{
+            margin-left: 5px;
+        }
+    }
+    &b_{
+        &10{
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.f_r{
+    float: right;
 }
