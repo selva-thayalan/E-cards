@@ -2,6 +2,7 @@
     --color-main: rgb(52, 255, 167);
     --color-text-main: black;
     --color-text-main-invert: white;
+    --color-error: rgb(255, 59, 59);
 }
 
 @mixin linkHoverEffect($bgColor) {
@@ -18,3 +19,13 @@
     border-radius: 5px;
     @include linkHoverEffect(var(--color-main));
 }
+
+@keyframes spin {
+    from {
+      transform: rotate(0);
+    }
+    to{
+      transform: rotate(359deg);
+    }
+  }
+  

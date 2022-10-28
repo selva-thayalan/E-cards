@@ -51,6 +51,9 @@ ul.no_default_style{
 
 .m_{
     &l_{
+        &2{
+            margin-left: 2px;
+        }
         &5{
             margin-left: 5px;
         }
@@ -60,8 +63,21 @@ ul.no_default_style{
             margin-bottom: 10px;
         }
     }
+    &t_{
+        &5{
+            margin-top: 5px;
+        }
+    }
 }
 
 .f_r{
     float: right;
+}
+
+.disp_inline{
+    display: inline-block;
+}
+
+.v_align_m{
+    vertical-align: middle;
 }

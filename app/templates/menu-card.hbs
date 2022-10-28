@@ -18,7 +18,12 @@
                     </tr>
                 {{/each}}
             </table>
-            <button class="add-new-item-btn f_r" title="Add a new menu item" {{action "addNewItem"}}>+</button>
+            <AsyncButton 
+                class="m_t_5"
+                @initialButtonText = "Create"
+                @waitingButtonText = "Creating"
+                @onClick = {{action "onCreateMenu"}}/>
+            <button class="add-new-item-btn e-card-btn f_r m_t_5" title="Add a new menu item" {{action "addNewItem"}}>+</button>
         </div>
     </div>
 {{outlet}}

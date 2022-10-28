@@ -1,0 +1,17 @@
+<span class="btn-text disp_inline v_align_m">
+    {{#if this.onClickTask.isIdle}}
+        {{this.initialButtonText}}
+    {{else}}
+        {{this.waitingButtonText}}
+    {{/if}}
+</span>
+{{#if (or this.onClickTask.isRunning this.isError)}}
+    <span class="btn-state disp_inline v_align_m m_l_2">
+        {{#if this.isError}}
+            {{!-- Add error related elements here --}}
+        {{else}}
+            <div class="loading-spinner"></div>
+        {{/if}}
+    </span>
+{{/if}}
+{{yield}}
