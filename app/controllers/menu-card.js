@@ -20,7 +20,7 @@ export default class MenuCardController extends Controller {
     //To testing the async button we are used this stuff. Need to replace with actual createMenu functionality.
     return new Promise((resolve, error)=>  {
       setTimeout(()=>{
-        return resolve("hai");
+        return error("hai");
       }, 1000);
     });
   }

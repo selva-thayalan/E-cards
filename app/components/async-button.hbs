@@ -8,7 +8,7 @@
 {{#if (or this.onClickTask.isRunning this.isError)}}
     <span class="btn-state disp_inline v_align_m m_l_2">
         {{#if this.isError}}
-            {{!-- Add error related elements here --}}
+            <i class="fa-solid fa-exclamation fa-black" title={{this.errorStack}}></i>
         {{else}}
             <div class="loading-spinner"></div>
         {{/if}}
