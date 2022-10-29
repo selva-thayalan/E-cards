@@ -52,7 +52,7 @@
 }
 
 ul.link li{
-    height: 20px;
+    height: max-content;
     @include linkButton();
 }
 
