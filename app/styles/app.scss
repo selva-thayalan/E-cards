@@ -94,12 +94,18 @@ input.card-input{
     border-radius: 3px;
     border: 1px solid black;
     &[type=text]{
-        &:focus,&:active,&:hover{
-            outline: none;
-            border: 1px solid var(--color-main);
+        outline: none;
+        &:not(.error){
+            &:focus,&:active,&:hover{
+                border: 1px solid var(--color-main);
+            }
+            &:focus{
+                box-shadow: 0 0 3px var(--color-main);
+            }
         }
-        &:focus{
-            box-shadow: 0 0 3px var(--color-main);
+        &.error{
+            border-color: var(--color-error);
+            box-shadow: 0 0 3px var(--color-error);
         }
     }
 }

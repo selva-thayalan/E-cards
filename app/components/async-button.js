@@ -23,6 +23,6 @@ export default class AsyncButtonComponent extends Component {
     *onClickTask(){
         yield this.onClick().then(
             () => this.setProperties({errorStack: "", isError: false, isClicked: true}),
-            (err) => this.setProperties({errorStack: `Some error occured... please retry... error message: ${err}`, isError: true}));
+            (err) => this.setProperties({errorStack: `Some error occured... Please retry... Error message:{ ${err} }`, isError: true}));
     }
 }
