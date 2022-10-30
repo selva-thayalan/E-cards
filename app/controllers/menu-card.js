@@ -20,8 +20,7 @@ export default class MenuCardController extends Controller {
   @action
   async onCreateMenu(){
     let validationResult = this.validateMenu();
-    //To testing the async button we are used this stuff. Need to repla
-    ce with actual createMenu functionality.
+    //To testing the async button we are used this stuff. Need to replace with actual createMenu functionality.
     return new Promise((resolve, error)=>  {
       setTimeout(()=>{
         if(validationResult == true)
