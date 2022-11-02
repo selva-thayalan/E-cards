@@ -1,11 +1,15 @@
 import Controller from '@ember/controller';
-import { action, set } from "@ember/object";
+import { action, set } from '@ember/object';
+import { inject } from '@ember/service';
 import isNullOrEmpty from '../utils/common/is-null-or-empty';
 
 export default class MenuCardController extends Controller {
-  isHotelNameInvalid = false;//To Show error message on the input tag.
+  isHotelNameInvalid = false; //To Show error message on the input tag.
   hotelName = '';
   menuItems = undefined;
+
+  @inject
+  requestHandler;
 
   init() {
     super.init(...arguments);
@@ -21,6 +25,7 @@ export default class MenuCardController extends Controller {
   async onCreateMenu(){
     let validationResult = this.validateMenu();
     //To testing the async button we are used this stuff. Need to replace with actual createMenu functionality.
+    let _this = this;
     return new Promise((resolve, error)=>  {
       setTimeout(()=>{
         if(validationResult == true)
@@ -28,6 +33,11 @@ export default class MenuCardController extends Controller {
         else
           error(validationResult);
       }, 1000);
+    }).then(() => {
+      return this.requestHandler.postRequest('menuCards', {
+        name: _this.hotelName,
+        items: _this.menuItems,
+      });
     });
   }
 
@@ -44,5 +54,5 @@ export default class MenuCardController extends Controller {
       }
     });
     return resultStatus;
-}
+  }
 }

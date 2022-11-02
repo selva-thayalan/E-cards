@@ -4,7 +4,8 @@ import { task } from "ember-concurrency";
 export default class AsyncButtonComponent extends Component {
     tagName = "button";
     classNames = ["async-btn","e-card-btn"];
-    classNameBindings = ["isClicked:disabled", "isError:error"]
+    classNameBindings = ["isClicked:disabled", "isError:error"];
+    attributeBindings = ['errorStack:title'];
 
     //args...
     initialButtonText = "";
