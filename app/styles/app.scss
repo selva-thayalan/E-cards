@@ -87,6 +87,7 @@ ul.link li{
     box-shadow: 0 0 10px var(--color-main);
     border-radius: 5px;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 input.card-input{
