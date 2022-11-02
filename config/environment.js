@@ -20,6 +20,7 @@ module.exports = function (environment) {
   };
 
   if (environment === 'development') {
+    ENV.API_URL = 'http://localhost:4000/';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -40,7 +41,7 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-    // here you can enable a production-specific feature
+    ENV.API_URL = 'http://localhost:4000/';//Need to replace the API url here.
   }
 
   return ENV;
