@@ -8,7 +8,7 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('menu-card', function () {
-    this.route('preview');
+    this.route('preview', { path: '/preview/:preview_id' });
     this.route('create');
     this.route('view');
   });

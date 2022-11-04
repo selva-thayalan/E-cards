@@ -4,9 +4,12 @@ import { inject } from '@ember/service';
 import isNullOrEmpty from '../../utils/common/is-null-or-empty';
 
 export default class MenuCardCreateController extends Controller {
-    isHotelNameInvalid = false; //To Show error message on the input tag.
+  isHotelNameInvalid = false; //To Show error message on the input tag.
   hotelName = '';
   menuItems = undefined;
+
+  @inject
+  router;
 
   @inject
   requestHandler;
@@ -37,7 +40,11 @@ export default class MenuCardCreateController extends Controller {
       return this.requestHandler.postRequest('menuCards', {
         name: _this.hotelName,
         items: _this.menuItems,
+      }).then(resp => {
+        return resp.json();
       });
+    }).then(model => {
+        this.router.transitionTo("menu-card.preview", {...model, id: "new"});
     });
   }
 
