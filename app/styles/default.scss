@@ -50,6 +50,9 @@ ul.no_default_style{
 }
 
 .m_{
+    &a{
+        margin: auto;
+    }
     &l_{
         &2{
             margin-left: 2px;
