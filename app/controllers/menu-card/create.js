@@ -8,11 +8,11 @@ export default class MenuCardCreateController extends Controller {
   
   hotelName = '';
   menuItems = undefined;
-  classificationList = [];//To add classifications for the menu items to be classified and search in view.
+  classificationList = [{name: "Time"}, {name: "Type"}];//To add classifications for the menu items to be classified and search in view.
 
   //classfications input relates properties.
   currentClassificationValue = "";
-  isClassificationEditEnabled = false;
+  classificationEditIndex = -1;
 
   @inject
   router;
@@ -26,9 +26,25 @@ export default class MenuCardCreateController extends Controller {
   }
 
   @action
-  addNewClassification(){
+  onAddNewClassification(){
     this.classificationList.pushObject(this.currentClassificationValue);
     this.set("currentClassificationValue","");
+  }
+
+  @action
+  onSaveClassification(){
+    set(this.classificationList.objectAt(this.classificationEditIndex), "name", this.currentClassificationValue);
+    this.setProperties({classificationEditIndex: -1, currentClassificationValue: ""});
+  }
+
+  @action
+  onCacelEditClassification(){
+    this.setProperties({classificationEditIndex: -1, currentClassificationValue: ""});
+  }
+
+  @action
+  editClassification(index){
+    this.setProperties({classificationEditIndex: index, currentClassificationValue: this.classificationList[index].name});
   }
 
   @action

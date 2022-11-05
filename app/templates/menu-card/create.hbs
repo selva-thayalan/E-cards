@@ -9,13 +9,19 @@
                     <p class="disp_inline">Classification Types:</p>
                     <div class="classification-input-cont disp_inline">
                         <Input class="disp_inline card-input compact-input" @value={{this.currentClassificationValue}}/>
-                        <button class="disp_inline" title="Add a new classification type" disabled={{eq this.currentClassificationValue ""}} {{action "addNewClassification"}}>Add New</button>
+                        {{#if (eq this.classificationEditIndex -1)}}
+                            <button class="disp_inline" title="Add a new classification type" disabled={{eq this.currentClassificationValue ""}} {{action "onAddNewClassification"}}>Add New</button>
+                        {{else}}
+                            <button class="disp_inline" title="Save the classification" disabled={{eq this.currentClassificationValue ""}} {{action "onSaveClassification"}}>Save</button>
+                            <button class="disp_inline" title="Cancel editing the classification" {{action "onCacelEditClassification"}}>Cancel</button>
+                        {{/if}}
                     </div>
                 </div>
                 <div class="classifications-list-cont t_align_c">
                     {{#each this.classificationList as |classification index|}}
                         <div class="classification-type-wrap disp_inline">
-                            <p class="classification-type">{{classification}}</p>
+                            <p class="classification-type disp_inline">{{classification.name}}</p>
+                            <i class="classification-edit fa-solid fa-pen disp_inline f_s_12 clickable" {{action "editClassification" index}}></i>
                         </div>
                     {{/each}}
                 </div>                  

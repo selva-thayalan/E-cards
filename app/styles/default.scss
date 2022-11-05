@@ -39,6 +39,10 @@ ul{
     height: 100%;
     width: 100%;
 }
+
+.clickable{
+    cursor: pointer;
+}
 /* .no_default_style this class will be used to remove the default style of that elements */
 ul.no_default_style{
     list-style-type: none;
@@ -77,6 +81,12 @@ ul.no_default_style{
         &5{
             margin-top: 5px;
         }
+    }
+}
+
+.f_s_{
+    &12{
+        font-size: 12px;
     }
 }
 
