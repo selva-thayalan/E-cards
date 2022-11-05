@@ -1,29 +1,3 @@
 {{page-title "Menu Card"}}
-    <div class="create-menu-form-cont full_size">
-        <div class="create-menu-form">
-            <div class="hotel-name">
-                Name: <Input class={{concat "card-input m_l_5 m_b_10" (if this.isHotelNameInvalid " error")}} @value={{this.hotelName}}/>
-            </div>
-            <table class="menu-card-items-table">
-                <tr>
-                    <th class="w_60">Name</th>
-                    <th class="w_20">Qty</th>
-                    <th class="w_20">Price</th>
-                </tr>
-                {{#each this.menuItems as |item index|}}
-                    <tr>
-                        <td class="w_60"><Input class={{concat "card-input w_100 t_align_c" (if item.isInvalidName " error")}} @value={{item.name}}></Input></td>
-                        <td class="w_20"><Input class="card-input w_100 t_align_c" @value={{item.quantity}}></Input></td>
-                        <td class="w_20"><Input class="card-input w_100 t_align_c" @value={{item.price}}></Input></td>
-                    </tr>
-                {{/each}}
-            </table>
-            <AsyncButton 
-                class="m_t_5"
-                @initialButtonText = "Create"
-                @waitingButtonText = "Creating"
-                @onClick = {{action "onCreateMenu"}}/>
-            <button class="add-new-item-btn e-card-btn f_r m_t_5" title="Add a new menu item" {{action "addNewItem"}}>+</button>
-        </div>
-    </div>
+
 {{outlet}}

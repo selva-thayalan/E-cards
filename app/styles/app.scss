@@ -82,11 +82,12 @@ ul.link li{
     width: 90%;
     max-width: 500px;
     margin: auto;
-    padding: 10px;
+    padding: 25px 15px 15px 15px;
     border: 1px var(--color-main) solid;
     box-shadow: 0 0 10px var(--color-main);
     border-radius: 5px;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 input.card-input{
@@ -129,6 +130,29 @@ input.card-input{
     }
 }
 
+.menu-classifications-cont{
+    width: 100%;
+    margin: 15px 0px 5px 0px;
+}
+
+.classifications-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.classifications-list-cont{
+    width: 100%;
+    margin: 10px 5px;
+}
+
+.classification-type-wrap{
+    background-color: rgb(203, 255, 195);
+    padding: 5px 10px;
+    margin: 2px 5px;
+    border-radius: 5px;
+}
+
 .loading-spinner{
     width: 15px;
     height: 15px;
@@ -138,4 +162,9 @@ input.card-input{
     border-top: 3px solid transparent;
     border-radius: 50%;
     animation: spin .4s linear 0s infinite;
+}
+
+//qr code component related.
+.qr-code-preview-container{
+    width: max-content;
 }

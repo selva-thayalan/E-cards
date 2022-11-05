@@ -18,6 +18,13 @@ a,button{
     cursor: pointer;
 }
 
+button{
+    &[disabled]{
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}
+
 p, ul{
     margin-block-start: 0px;
     margin-block-end: 0px;
@@ -50,6 +57,9 @@ ul.no_default_style{
 }
 
 .m_{
+    &a{
+        margin: auto;
+    }
     &l_{
         &2{
             margin-left: 2px;

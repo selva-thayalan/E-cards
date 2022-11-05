@@ -1,0 +1,45 @@
+{{page-title "Create"}}
+    <div class="create-menu-form-cont full_size">
+        <div class="create-menu-form">
+            <div class="hotel-name">
+                Name: <Input class={{concat "card-input m_l_5 m_b_10" (if this.isHotelNameInvalid " error")}} @value={{this.hotelName}}/>
+            </div>
+            <div class="menu-classifications-cont">
+                <div class="classifications-header">
+                    <p class="disp_inline">Classification Types:</p>
+                    <div class="classification-input-cont disp_inline">
+                        <Input class="disp_inline card-input compact-input" @value={{this.currentClassificationValue}}/>
+                        <button class="disp_inline" title="Add a new classification type" disabled={{eq this.currentClassificationValue ""}} {{action "addNewClassification"}}>Add New</button>
+                    </div>
+                </div>
+                <div class="classifications-list-cont t_align_c">
+                    {{#each this.classificationList as |classification index|}}
+                        <div class="classification-type-wrap disp_inline">
+                            <p class="classification-type">{{classification}}</p>
+                        </div>
+                    {{/each}}
+                </div>                  
+            </div>
+            <table class="menu-card-items-table">
+                <tr>
+                    <th class="w_60">Name</th>
+                    <th class="w_20">Qty</th>
+                    <th class="w_20">Price</th>
+                </tr>
+                {{#each this.menuItems as |item index|}}
+                    <tr>
+                        <td class="w_60"><Input class={{concat "card-input w_100 t_align_c" (if item.isInvalidName " error")}} @value={{item.name}}></Input></td>
+                        <td class="w_20"><Input class="card-input w_100 t_align_c" @value={{item.quantity}}></Input></td>
+                        <td class="w_20"><Input class="card-input w_100 t_align_c" @value={{item.price}}></Input></td>
+                    </tr>
+                {{/each}}
+            </table>
+            <AsyncButton 
+                class="m_t_5"
+                @initialButtonText = "Create"
+                @waitingButtonText = "Creating"
+                @onClick = {{action "onCreateMenu"}}/>
+            <button class="add-new-item-btn e-card-btn f_r m_t_5" title="Add a new menu item" {{action "addNewItem"}}>+</button>
+        </div>
+    </div>
+{{outlet}}
