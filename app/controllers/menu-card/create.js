@@ -5,8 +5,14 @@ import isNullOrEmpty from '../../utils/common/is-null-or-empty';
 
 export default class MenuCardCreateController extends Controller {
   isHotelNameInvalid = false; //To Show error message on the input tag.
+  
   hotelName = '';
   menuItems = undefined;
+  classificationList = [];//To add classifications for the menu items to be classified and search in view.
+
+  //classfications input relates properties.
+  currentClassificationValue = "";
+  isClassificationEditEnabled = false;
 
   @inject
   router;
@@ -17,6 +23,12 @@ export default class MenuCardCreateController extends Controller {
   init() {
     super.init(...arguments);
     this.menuItems = [{ name: '', quantity: '', price: '' }];
+  }
+
+  @action
+  addNewClassification(){
+    this.classificationList.pushObject(this.currentClassificationValue);
+    this.set("currentClassificationValue","");
   }
 
   @action

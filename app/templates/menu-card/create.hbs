@@ -4,6 +4,22 @@
             <div class="hotel-name">
                 Name: <Input class={{concat "card-input m_l_5 m_b_10" (if this.isHotelNameInvalid " error")}} @value={{this.hotelName}}/>
             </div>
+            <div class="menu-classifications-cont">
+                <div class="classifications-header">
+                    <p class="disp_inline">Classification Types:</p>
+                    <div class="classification-input-cont disp_inline">
+                        <Input class="disp_inline card-input compact-input" @value={{this.currentClassificationValue}}/>
+                        <button class="disp_inline" title="Add a new classification type" disabled={{eq this.currentClassificationValue ""}} {{action "addNewClassification"}}>Add New</button>
+                    </div>
+                </div>
+                <div class="classifications-list-cont t_align_c">
+                    {{#each this.classificationList as |classification index|}}
+                        <div class="classification-type-wrap disp_inline">
+                            <p class="classification-type">{{classification}}</p>
+                        </div>
+                    {{/each}}
+                </div>                  
+            </div>
             <table class="menu-card-items-table">
                 <tr>
                     <th class="w_60">Name</th>
