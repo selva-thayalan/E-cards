@@ -26,18 +26,21 @@
                     {{/each}}
                 </div>                  
             </div>
-            <table class="menu-card-items-table">
-                <tr>
-                    <th class="w_60">Name</th>
-                    <th class="w_20">Qty</th>
-                    <th class="w_20">Price</th>
-                </tr>
+            <table class="menu-card-items-cont disp_flex">
                 {{#each this.menuItems as |item index|}}
-                    <tr>
-                        <td class="w_60"><Input class={{concat "card-input w_100 t_align_c" (if item.isInvalidName " error")}} @value={{item.name}}></Input></td>
-                        <td class="w_20"><Input class="card-input w_100 t_align_c" @value={{item.quantity}}></Input></td>
-                        <td class="w_20"><Input class="card-input w_100 t_align_c" @value={{item.price}}></Input></td>
-                    </tr>
+                    <div class="menu-item disp_flex">
+                        <div class="menu-item-details disp_flex">
+                            <div class="w_60 p_rl_5"><Input class={{concat "card-input w_100 t_align_c" (if item.isInvalidName " error")}} @value={{item.name}}></Input></div>
+                            <div class="w_20 p_rl_5"><Input class="card-input w_100 t_align_c" @value={{item.quantity}}></Input></div>
+                            <div class="w_20 p_rl_5"><Input class="card-input w_100 t_align_c" @value={{item.price}}></Input></div>
+                        </div>
+                        <div class="menu-item-private-details">
+                            <div class="hash-tags">
+                                <p class="disp_inline">#:</p>
+                                <Input class="disp_inline card-input mini-size"/>
+                            </div>
+                        </div>
+                    </div>
                 {{/each}}
             </table>
             <AsyncButton 

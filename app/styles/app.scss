@@ -90,6 +90,28 @@ ul.link li{
     overflow-x: hidden;
 }
 
+.menu-card-items-cont{
+    flex-direction: column;
+}
+
+.menu-item{
+    flex-direction: column;
+    padding: 10px 5px;
+    margin: 5px 0px;
+    border-radius: 5px;
+    &:nth-child(even){
+        background-color: rgb(233, 233, 233);
+    }
+    &:nth-child(odd){
+        background-color: rgb(222, 222, 222);
+    }
+}
+
+.menu-item-details{
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
 input.card-input{
     height: 25px;
     border-radius: 3px;
@@ -167,4 +189,11 @@ input.card-input{
 //qr code component related.
 .qr-code-preview-container{
     width: max-content;
+}
+
+//input field customization related.
+input{
+    &.mini-size{
+        height: 18px;
+    }
 }
