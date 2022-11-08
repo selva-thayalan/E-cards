@@ -5,6 +5,9 @@ import isNullOrEmpty from '../../utils/common/is-null-or-empty';
 
 export default class MenuCardCreateController extends Controller {
   isHotelNameInvalid = false; //To Show error message on the input tag.
+
+  menuViewStyleOptions = [{ name: "List", id: true, icon: "fa-solid fa-list" }, { name: "Card", id: false, icon: "fa-solid fa-border-all" }];
+  isListMenuStyle = true;
   
   hotelName = '';
   menuItems = undefined;

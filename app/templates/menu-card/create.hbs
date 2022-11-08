@@ -1,9 +1,14 @@
 {{page-title "Create"}}
     <div class="create-menu-form-cont full_size">
         <div class="create-menu-form">
-            <div class="hotel-name">
+            <div class="hotel-name disp_inline">
                 Name: <Input class={{concat "card-input m_l_5 m_b_10" (if this.isHotelNameInvalid " error")}} @value={{this.hotelName}}/>
             </div>
+            <StateSwitch
+                @class="f_r"
+                @isIconButton = {{true}}
+                @options = {{this.menuViewStyleOptions}}
+                @selectedOption = {{this.isListMenuStyle}}/>
             <div class="menu-classifications-cont">
                 <div class="classifications-header">
                     <p class="disp_inline">Classification Types:</p>
@@ -26,13 +31,13 @@
                     {{/each}}
                 </div>                  
             </div>
-            <table class="menu-card-items-cont disp_flex">
+            <div class={{concat "menu-card-items-cont disp_flex " (if this.isListMenuStyle "list-view" "grid-view")}}>
                 {{#each this.menuItems as |item index|}}
                     <div class="menu-item disp_flex">
                         <div class="menu-item-details disp_flex">
-                            <div class="w_60 p_rl_5"><Input class={{concat "card-input w_100 t_align_c" (if item.isInvalidName " error")}} @value={{item.name}}></Input></div>
-                            <div class="w_20 p_rl_5"><Input class="card-input w_100 t_align_c" @value={{item.quantity}}></Input></div>
-                            <div class="w_20 p_rl_5"><Input class="card-input w_100 t_align_c" @value={{item.price}}></Input></div>
+                            <div class="menu-item-name p_rl_5"><Input class={{concat "card-input w_100 t_align_c" (if item.isInvalidName " error")}} @value={{item.name}}></Input></div>
+                            <div class="menu-item-quantity p_rl_5"><Input class="card-input w_100 t_align_c" @value={{item.quantity}}></Input></div>
+                            <div class="menu-item-price p_rl_5"><Input class="card-input w_100 t_align_c" @value={{item.price}}></Input></div>
                         </div>
                         <div class="menu-item-private-details">
                             <div class="hash-tags">
@@ -42,7 +47,7 @@
                         </div>
                     </div>
                 {{/each}}
-            </table>
+            </div>
             <AsyncButton 
                 class="m_t_5"
                 @initialButtonText = "Create"
