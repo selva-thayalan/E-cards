@@ -5,14 +5,17 @@ import isNullOrEmpty from '../../utils/common/is-null-or-empty';
 
 export default class MenuCardCreateController extends Controller {
   isHotelNameInvalid = false; //To Show error message on the input tag.
+
+  menuViewStyleOptions = [{ name: "List", id: true, icon: "fa-solid fa-list" }, { name: "Card", id: false, icon: "fa-solid fa-border-all" }];
+  isListMenuStyle = true;
   
   hotelName = '';
   menuItems = undefined;
-  classificationList = [];//To add classifications for the menu items to be classified and search in view.
+  classificationList = [{name: "Time", options: ["Tiffin", "Lunch", "Dinner"]}, {name: "Type", options: ["Veg", "Non veg"]}];//To add classifications for the menu items to be classified and search in view.
 
   //classfications input relates properties.
   currentClassificationValue = "";
-  isClassificationEditEnabled = false;
+  classificationEditIndex = -1;
 
   @inject
   router;
@@ -22,18 +25,46 @@ export default class MenuCardCreateController extends Controller {
 
   init() {
     super.init(...arguments);
-    this.menuItems = [{ name: '', quantity: '', price: '' }];
+    this.menuItems = [{ name: '', quantity: '', price: '', hashtags: '', classifications: {} }];
   }
 
   @action
-  addNewClassification(){
+  onAddNewClassification(){
     this.classificationList.pushObject(this.currentClassificationValue);
     this.set("currentClassificationValue","");
   }
 
   @action
+  onSaveClassification(){
+    set(this.classificationList.objectAt(this.classificationEditIndex), "name", this.currentClassificationValue);
+    this.setProperties({classificationEditIndex: -1, currentClassificationValue: ""});
+  }
+
+  @action
+  onCacelEditClassification(){
+    this.setProperties({classificationEditIndex: -1, currentClassificationValue: ""});
+  }
+
+  @action
+  editClassification(index){
+    this.setProperties({classificationEditIndex: index, currentClassificationValue: this.classificationList[index].name});
+  }
+
+  @action
+  onAddClassificationOption(menuIndex, classificationIndex, option) {
+    let classfication = this.classificationList.objectAt(classificationIndex);
+    classfication.options.pushObject(option);
+    set(this.menuItems.objectAt(menuIndex).classifications, classfication.name, option);
+  }
+
+  @action
+  onSelectClassificationOption(menuIndex, classificationName, option){
+    set(this.menuItems.objectAt(menuIndex).classifications, classificationName, option);
+  }
+
+  @action
   addNewItem() {
-    this.menuItems.pushObject({ name: '', quantity: '', price: '' });
+    this.menuItems.pushObject({ name: '', quantity: '', price: '', hashtags: '', classifications: {} });
   }
 
   @action

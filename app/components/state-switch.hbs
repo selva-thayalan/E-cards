@@ -1,0 +1,10 @@
+{{#each this.options as |option|}}
+    <div class="state-cont clickable" active={{eq option.id this.selectedOption}} {{action "onClickState" option.id}}>
+        {{#if this.isIconButton}}
+            <i class={{option.icon}}></i>
+        {{else}}
+            <p class="state-name">{{option.name}}</p>
+        {{/if}}
+    </div>
+{{/each}}
+{{yield}}

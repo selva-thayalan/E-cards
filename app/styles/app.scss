@@ -90,6 +90,71 @@ ul.link li{
     overflow-x: hidden;
 }
 
+.menu-card-items-cont{
+    &.list-view{
+        transition: all .5s ease-in-out;
+        flex-direction: column;
+        .menu-item-details{
+            flex-direction: row;
+            transition: all .5s ease-in-out;
+        }
+        .menu-item{
+            padding: 10px 5px;
+            transition: all .5s ease-in-out;
+            &:nth-child(even){
+                background-color: rgb(233, 233, 233);
+            }
+            &:nth-child(odd){
+                background-color: rgb(222, 222, 222);
+            }
+        }
+        .menu-item-name{
+            width: 60%;
+            transition: all .5s ease-in-out;
+        }
+        .menu-item-quantity, .menu-item-price{
+            width: 20%;
+            transition: all .5s ease-in-out;
+        }
+    }
+    &.grid-view{
+        transition: all .5s ease-in-out;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        .menu-item{
+            background-color: rgb(222, 222, 222);
+            padding: 20px 5px;
+            transition: all .5s ease-in-out;
+        }
+        .menu-item-details{
+            flex-direction: column;
+            align-items: center;
+            transition: all .5s ease-in-out;
+        }
+        .menu-item-name{
+            width: 100%;
+            padding: 2px 5px;
+            transition: all .5s ease-in-out;
+        }
+        .menu-item-quantity, .menu-item-price{
+            width: 50%;
+            padding: 2px 5px;
+            transition: all .5s ease-in-out;
+        }
+    }
+}
+
+.menu-item{
+    flex-direction: column;
+    margin: 5px 0px;
+    border-radius: 5px;
+}
+
+.menu-item-details{
+    margin-bottom: 5px;
+}
+
 input.card-input{
     height: 25px;
     border-radius: 3px;
@@ -167,4 +232,40 @@ input.card-input{
 //qr code component related.
 .qr-code-preview-container{
     width: max-content;
+}
+
+//state switch component related.
+.state-switch-cont{
+    margin: auto;
+    width: max-content;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.state-cont{
+    padding: 5px;
+    &:not(:last-child){
+        border-right: 1px solid black;
+    }
+    &:last-child{
+        border-bottom-right-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+    &:first-child{
+        border-bottom-left-radius: 3px;
+        border-top-left-radius: 3px;
+    }
+    &[active]{
+        background-color: aquamarine;
+    }
+}
+
+//input field customization related.
+input{
+    &.mini-size{
+        height: 18px;
+    }
 }

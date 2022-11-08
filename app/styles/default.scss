@@ -39,6 +39,39 @@ ul{
     height: 100%;
     width: 100%;
 }
+
+.clickable{
+    cursor: pointer;
+}
+
+.disp_flex{
+    display: flex;
+}
+
+.disp_inline{
+    display: inline-block;
+}
+
+.f_r{
+    float: right;
+}
+
+.v_align_m{
+    vertical-align: middle;
+}
+
+.t_align_c{
+    text-align: center;
+}
+
+.p_{
+    &rl_{
+        &5{
+            padding: 0px 5px;
+        }
+    }
+}
+
 /* .no_default_style this class will be used to remove the default style of that elements */
 ul.no_default_style{
     list-style-type: none;
@@ -78,20 +111,15 @@ ul.no_default_style{
             margin-top: 5px;
         }
     }
+    &tb_{
+        &5{
+            margin: 5px 0px;
+        }
+    }
 }
 
-.f_r{
-    float: right;
-}
-
-.disp_inline{
-    display: inline-block;
-}
-
-.v_align_m{
-    vertical-align: middle;
-}
-
-.t_align_c{
-    text-align: center;
+.f_s_{
+    &12{
+        font-size: 12px;
+    }
 }

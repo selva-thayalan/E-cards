@@ -1,39 +1,68 @@
 {{page-title "Create"}}
     <div class="create-menu-form-cont full_size">
         <div class="create-menu-form">
-            <div class="hotel-name">
+            <div class="hotel-name disp_inline">
                 Name: <Input class={{concat "card-input m_l_5 m_b_10" (if this.isHotelNameInvalid " error")}} @value={{this.hotelName}}/>
             </div>
+            <StateSwitch
+                @class="f_r"
+                @isIconButton = {{true}}
+                @options = {{this.menuViewStyleOptions}}
+                @selectedOption = {{this.isListMenuStyle}}/>
             <div class="menu-classifications-cont">
                 <div class="classifications-header">
                     <p class="disp_inline">Classification Types:</p>
                     <div class="classification-input-cont disp_inline">
                         <Input class="disp_inline card-input compact-input" @value={{this.currentClassificationValue}}/>
-                        <button class="disp_inline" title="Add a new classification type" disabled={{eq this.currentClassificationValue ""}} {{action "addNewClassification"}}>Add New</button>
+                        {{#if (eq this.classificationEditIndex -1)}}
+                            <button class="disp_inline" title="Add a new classification type" disabled={{eq this.currentClassificationValue ""}} {{action "onAddNewClassification"}}>Add New</button>
+                        {{else}}
+                            <button class="disp_inline" title="Save the classification" disabled={{eq this.currentClassificationValue ""}} {{action "onSaveClassification"}}>Save</button>
+                            <button class="disp_inline" title="Cancel editing the classification" {{action "onCacelEditClassification"}}>Cancel</button>
+                        {{/if}}
                     </div>
                 </div>
                 <div class="classifications-list-cont t_align_c">
                     {{#each this.classificationList as |classification index|}}
                         <div class="classification-type-wrap disp_inline">
-                            <p class="classification-type">{{classification}}</p>
+                            <p class="classification-type disp_inline">{{classification.name}}</p>
+                            <i class="classification-edit fa-solid fa-pen disp_inline f_s_12 clickable" {{action "editClassification" index}}></i>
                         </div>
                     {{/each}}
                 </div>                  
             </div>
-            <table class="menu-card-items-table">
-                <tr>
-                    <th class="w_60">Name</th>
-                    <th class="w_20">Qty</th>
-                    <th class="w_20">Price</th>
-                </tr>
+            <div class={{concat "menu-card-items-cont disp_flex " (if this.isListMenuStyle "list-view" "grid-view")}}>
                 {{#each this.menuItems as |item index|}}
-                    <tr>
-                        <td class="w_60"><Input class={{concat "card-input w_100 t_align_c" (if item.isInvalidName " error")}} @value={{item.name}}></Input></td>
-                        <td class="w_20"><Input class="card-input w_100 t_align_c" @value={{item.quantity}}></Input></td>
-                        <td class="w_20"><Input class="card-input w_100 t_align_c" @value={{item.price}}></Input></td>
-                    </tr>
+                    <div class="menu-item disp_flex">
+                        <div class="menu-item-details disp_flex">
+                            <div class="menu-item-name p_rl_5"><Input class={{concat "card-input w_100 t_align_c" (if item.isInvalidName " error")}} @value={{item.name}}></Input></div>
+                            <div class="menu-item-quantity p_rl_5"><Input class="card-input w_100 t_align_c" @value={{item.quantity}}></Input></div>
+                            <div class="menu-item-price p_rl_5"><Input class="card-input w_100 t_align_c" @value={{item.price}}></Input></div>
+                        </div>
+                        <div class="menu-item-private-details">
+                            <div class="hash-tags">
+                                <p class="disp_inline">#:</p>
+                                <Input class="disp_inline card-input mini-size"/>
+                            </div>
+                            <div class="classification-types">
+                                {{#each this.classificationList as |classification classificationIndex|}}
+                                    <div class="classification-option">
+                                        <p class="disp_inline">{{classification.name}}:</p>
+                                        <PowerSelectWithCreate
+                                            @options={{classification.options}}
+                                            @selected={{get item.classifications classification.name}}
+                                            @onChange={{action "onSelectClassificationOption" index classification.name}}
+                                            @onCreate={{action "onAddClassificationOption" index classificationIndex}}
+                                            as |classificationType|>
+                                            {{classificationType}}
+                                        </PowerSelectWithCreate>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
                 {{/each}}
-            </table>
+            </div>
             <AsyncButton 
                 class="m_t_5"
                 @initialButtonText = "Create"
