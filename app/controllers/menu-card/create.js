@@ -11,7 +11,7 @@ export default class MenuCardCreateController extends Controller {
   
   hotelName = '';
   menuItems = undefined;
-  classificationList = [{name: "Time"}, {name: "Type"}];//To add classifications for the menu items to be classified and search in view.
+  classificationList = [{name: "Time", options: ["Tiffin", "Lunch", "Dinner"]}, {name: "Type", options: ["Veg", "Non veg"]}];//To add classifications for the menu items to be classified and search in view.
 
   //classfications input relates properties.
   currentClassificationValue = "";
@@ -25,7 +25,7 @@ export default class MenuCardCreateController extends Controller {
 
   init() {
     super.init(...arguments);
-    this.menuItems = [{ name: '', quantity: '', price: '' }];
+    this.menuItems = [{ name: '', quantity: '', price: '', hashtags: '', classifications: {} }];
   }
 
   @action
@@ -51,8 +51,20 @@ export default class MenuCardCreateController extends Controller {
   }
 
   @action
+  onAddClassificationOption(menuIndex, classificationIndex, option) {
+    let classfication = this.classificationList.objectAt(classificationIndex);
+    classfication.options.pushObject(option);
+    set(this.menuItems.objectAt(menuIndex).classifications, classfication.name, option);
+  }
+
+  @action
+  onSelectClassificationOption(menuIndex, classificationName, option){
+    set(this.menuItems.objectAt(menuIndex).classifications, classificationName, option);
+  }
+
+  @action
   addNewItem() {
-    this.menuItems.pushObject({ name: '', quantity: '', price: '' });
+    this.menuItems.pushObject({ name: '', quantity: '', price: '', hashtags: '', classifications: {} });
   }
 
   @action

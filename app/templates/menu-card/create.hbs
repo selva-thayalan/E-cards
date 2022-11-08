@@ -44,6 +44,21 @@
                                 <p class="disp_inline">#:</p>
                                 <Input class="disp_inline card-input mini-size"/>
                             </div>
+                            <div class="classification-types">
+                                {{#each this.classificationList as |classification classificationIndex|}}
+                                    <div class="classification-option">
+                                        <p class="disp_inline">{{classification.name}}:</p>
+                                        <PowerSelectWithCreate
+                                            @options={{classification.options}}
+                                            @selected={{get item.classifications classification.name}}
+                                            @onChange={{action "onSelectClassificationOption" index classification.name}}
+                                            @onCreate={{action "onAddClassificationOption" index classificationIndex}}
+                                            as |classificationType|>
+                                            {{classificationType}}
+                                        </PowerSelectWithCreate>
+                                    </div>
+                                {{/each}}
+                            </div>
                         </div>
                     </div>
                 {{/each}}
