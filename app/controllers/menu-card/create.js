@@ -25,7 +25,7 @@ export default class MenuCardCreateController extends Controller {
 
   init() {
     super.init(...arguments);
-    this.menuItems = [{ name: '', quantity: '', price: '', hashtags: '', classifications: {} }];
+    this.menuItems = [{ name: '', quantity: '', price: '', keywords: '', classifications: {} }];
   }
 
   @action
@@ -64,7 +64,7 @@ export default class MenuCardCreateController extends Controller {
 
   @action
   addNewItem() {
-    this.menuItems.pushObject({ name: '', quantity: '', price: '', hashtags: '', classifications: {} });
+    this.menuItems.pushObject({ name: '', quantity: '', price: '', keywords: '', classifications: {} });
   }
 
   @action
@@ -83,6 +83,7 @@ export default class MenuCardCreateController extends Controller {
       return this.requestHandler.postRequest('menuCards', {
         name: _this.hotelName,
         items: _this.menuItems,
+        classificationList: _this.classificationList
       }).then(resp => {
         return resp.json();
       });

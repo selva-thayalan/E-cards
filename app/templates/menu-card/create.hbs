@@ -40,15 +40,16 @@
                             <div class="menu-item-price p_rl_5"><Input class="card-input w_100 t_align_c" @value={{item.price}}></Input></div>
                         </div>
                         <div class="menu-item-private-details">
-                            <div class="hash-tags">
-                                <p class="disp_inline">#:</p>
-                                <Input class="disp_inline card-input mini-size"/>
+                            <div class="hash-tags disp_inline v_align_m">
+                                <p class="label_small">keywords:</p>
+                                <Input class="card-input" @value={{item.keywords}}/>
                             </div>
-                            <div class="classification-types">
+                            <div class="classification-types disp_inline v_align_m">
                                 {{#each this.classificationList as |classification classificationIndex|}}
-                                    <div class="classification-option">
-                                        <p class="disp_inline">{{classification.name}}:</p>
+                                    <div class="classification-option disp_inline">
+                                        <p class="label_small">{{classification.name}}:</p>
                                         <PowerSelectWithCreate
+                                            class = "width_medium"
                                             @options={{classification.options}}
                                             @selected={{get item.classifications classification.name}}
                                             @onChange={{action "onSelectClassificationOption" index classification.name}}
